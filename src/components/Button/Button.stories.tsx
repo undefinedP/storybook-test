@@ -18,10 +18,10 @@ const meta: Meta<typeof Button> = {
   argTypes: {
     variant: {
       control: "select",
-      options: ["primary", "secondary", "ghost", "link", "danger", "outline"],
+      options: ["primary", "secondary", "ghost", "link", "danger"],
       description: "버튼의 Semantic 역할",
       table: {
-        type: { summary: "primary | secondary | ghost | link | danger | outline" },
+        type: { summary: "primary | secondary | ghost | link | danger" },
         defaultValue: { summary: "primary" },
       },
     },
@@ -102,9 +102,6 @@ export const Type: Story = {
       </Button>
       <Button variant="danger" startIcon={<AddIcon />}>
         Danger
-      </Button>
-      <Button variant="outline" startIcon={<AddIcon />}>
-        Outline
       </Button>
     </div>
   ),
