@@ -18,6 +18,8 @@ const buttonVariants = cva(
         link: 'text-[#60a5fa] hover:underline data-[selected=true]:underline focus-visible:shadow-[0_0_0_1px_#252a39,0_0_0_2px_#60a5fa]',
         danger:
           'bg-[#ef4444] text-white hover:bg-[#f87171] data-[selected=true]:bg-[#f87171] focus-visible:shadow-[0_0_0_1px_#252a39,0_0_0_2px_#ef4444]',
+        outline:
+          'bg-transparent text-[#3b82f6] border border-[#3b82f6] hover:bg-[#3b82f6]/10 data-[selected=true]:bg-[#3b82f6]/10 focus-visible:shadow-[0_0_0_1px_#252a39,0_0_0_2px_#3b82f6]',
       },
       size: {
         small: 'h-[2rem] px-[0.75rem]',
