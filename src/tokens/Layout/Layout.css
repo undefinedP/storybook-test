@@ -1,0 +1,230 @@
+/*
+ * Copyright (C) 2025. Nota Inc. All rights reserved.
+ * This source code is the property of nota inc. and is protected by copyright law. THE RECEIPT OR POSSESSION OF  THIS SOURCE CODE AND/OR RELATED INFORMATION DOES NOT CONVEY OR IMPLY TRANSFER OF OWNERSHIP, COPYRIGHT OR ANY RIGHTS INCLUDING BUT NOT LIMITED TO REPRODUCE, DISCLOSE OR DISTRIBUTE ITS CONTENTS, OR TO MANUFACTURE, USE, OR SELL ANYTHING THAT IT MAY DESCRIBE, IN WHOLE OR IN PART.
+ * Unauthorized disclosure, reproduction, modification, distribution, or commercial use of all or any part of this source code without prior written consent from Nota Inc. is strictly prohibited.
+ * This source code is provided "as is" and without any warranty, express or implied.
+ * Nota Inc. shall not be liable for any damages arising from the use of this source code.
+ * For inquiries regarding the use of this source code, please contact Nota Inc. at:
+ * Email: contact@nota.ai
+ */
+
+:root {
+  /* ========================================
+   * Breakpoint Values
+   * 
+   * 참고: CSS 미디어 쿼리에서는 CSS 변수를 사용할 수 없으므로,
+   * 이 값들은 주로 다음 용도로 사용됩니다:
+   * 1. JavaScript에서 getComputedStyle()로 읽어서 사용
+   * 2. 문서화 및 참조 목적
+   * 3. 비 미디어쿼리 CSS 속성에서 사용 (예: calc() 등)
+   * 
+   * JavaScript/TypeScript에서 사용하려면:
+   * import { LAYOUT_BREAKPOINTS } from '@nota/ui';
+   * ======================================== */
+  --layout-breakpoint-s: 0px; /* Mobile: 0 ~ 599px */
+  --layout-breakpoint-md: 600px; /* Tablet: 600 ~ 1023px */
+  --layout-breakpoint-lg: 1024px; /* Laptop: 1024 ~ 1599px */
+  --layout-breakpoint-xl: 1600px; /* Desktop: 1600px ~ */
+
+  /* ========================================
+   * Grid System
+   * 
+   * 참고: 컬럼 수는 Breakpoint에 따라 변경됩니다.
+   * Breakpoint에 따라 변경되는 것:
+   * 1. 컬럼 수 (s: 4, md: 6, lg: 8, xl: 12)
+   * 2. 각 컬럼의 너비 (자동 계산)
+   * 3. Gutter (컬럼 간 간격)
+   * 4. Margin (화면 양쪽 여백)
+   * ======================================== */
+  --layout-grid-columns-s: 4; /* Mobile: 4 columns */
+  --layout-grid-columns-md: 6; /* Tablet: 6 columns */
+  --layout-grid-columns-lg: 8; /* Laptop: 8 columns */
+  --layout-grid-columns-xl: 12; /* Desktop: 12 columns */
+
+  /* Mobile (s) - 대표 해상도: 360×800 */
+  --layout-grid-s-gutter: 0.75rem; /* 12px */
+  --layout-grid-s-margin: 1rem; /* 16px */
+
+  /* Tablet (md) - 대표 해상도: 1024×768 */
+  --layout-grid-md-gutter: 1rem; /* 16px */
+  --layout-grid-md-margin: 1.5rem; /* 24px */
+
+  /* Laptop (lg) - 대표 해상도: 1366×768 */
+  --layout-grid-lg-gutter: 1.5rem; /* 24px */
+  --layout-grid-lg-margin: 2rem; /* 32px */
+
+  /* Desktop (xl) - 대표 해상도: 1920×1080 */
+  --layout-grid-xl-gutter: 1.5rem; /* 24px */
+  --layout-grid-xl-margin: 2rem; /* 32px */
+
+  /* ========================================
+   * Ratio Patterns (fr unit)
+   * 비율은 강제하지 않으며, 권장 패턴으로 제공
+   * ======================================== */
+  --layout-ratio-balanced: 1fr 1fr; /* 균형 분할 (1:1) */
+  --layout-ratio-content-detail: 3fr 5fr; /* 상세 + 로그 (3:5) */
+  --layout-ratio-main-inspector: 4fr 1fr; /* 메인 + 보조 패널 (4:1) */
+  --layout-ratio-canvas-panel: 6fr 2fr; /* 맵/영상 + 패널 (6:2) */
+}
+
+@theme {
+  /* Breakpoint */
+  --layout-breakpoint-breakpoint-s: var(--layout-breakpoint-s);
+  --layout-breakpoint-breakpoint-md: var(--layout-breakpoint-md);
+  --layout-breakpoint-breakpoint-lg: var(--layout-breakpoint-lg);
+  --layout-breakpoint-breakpoint-xl: var(--layout-breakpoint-xl);
+
+  /* Grid Columns (반응형) */
+  --layout-grid-grid-columns-s: var(--layout-grid-columns-s);
+  --layout-grid-grid-columns-md: var(--layout-grid-columns-md);
+  --layout-grid-grid-columns-lg: var(--layout-grid-columns-lg);
+  --layout-grid-grid-columns-xl: var(--layout-grid-columns-xl);
+
+  /* Grid - Mobile (s) */
+  --layout-grid-grid-s-gutter: var(--layout-grid-s-gutter);
+  --layout-grid-grid-s-margin: var(--layout-grid-s-margin);
+
+  /* Grid - Tablet (md) */
+  --layout-grid-grid-md-gutter: var(--layout-grid-md-gutter);
+  --layout-grid-grid-md-margin: var(--layout-grid-md-margin);
+
+  /* Grid - Laptop (lg) */
+  --layout-grid-grid-lg-gutter: var(--layout-grid-lg-gutter);
+  --layout-grid-grid-lg-margin: var(--layout-grid-lg-margin);
+
+  /* Grid - Desktop (xl) */
+  --layout-grid-grid-xl-gutter: var(--layout-grid-xl-gutter);
+  --layout-grid-grid-xl-margin: var(--layout-grid-xl-margin);
+}
+
+/* ========================================
+ * Utility Classes
+ * 
+ * 참고: Breakpoint별 조건부 렌더링은 CSS 클래스 대신
+ * useCurrentLayoutBreakpoint 훅을 사용합니다.
+ * 이렇게 하면 불필요한 DOM 노드를 생성하지 않고,
+ * React의 조건부 렌더링 패턴을 따를 수 있습니다.
+ * ======================================== */
+
+/* Grid Columns - 반응형 */
+.layout-grid-columns {
+  grid-template-columns: repeat(var(--layout-grid-columns-s), minmax(0, 1fr));
+}
+
+@media (min-width: 600px) {
+  .layout-grid-columns {
+    grid-template-columns: repeat(
+      var(--layout-grid-columns-md),
+      minmax(0, 1fr)
+    );
+  }
+}
+
+@media (min-width: 1024px) {
+  .layout-grid-columns {
+    grid-template-columns: repeat(
+      var(--layout-grid-columns-lg),
+      minmax(0, 1fr)
+    );
+  }
+}
+
+@media (min-width: 1600px) {
+  .layout-grid-columns {
+    grid-template-columns: repeat(
+      var(--layout-grid-columns-xl),
+      minmax(0, 1fr)
+    );
+  }
+}
+
+/* Grid Gutter - 반응형 */
+.layout-gutter-default {
+  gap: var(--layout-grid-s-gutter);
+}
+
+@media (min-width: 600px) {
+  .layout-gutter-default {
+    gap: var(--layout-grid-md-gutter);
+  }
+}
+
+@media (min-width: 1024px) {
+  .layout-gutter-default {
+    gap: var(--layout-grid-lg-gutter);
+  }
+}
+
+@media (min-width: 1600px) {
+  .layout-gutter-default {
+    gap: var(--layout-grid-xl-gutter);
+  }
+}
+
+/* Grid Gutter - 고정 */
+.layout-gutter-compact {
+  gap: var(--layout-grid-s-gutter);
+}
+
+.layout-gutter-spacious {
+  gap: var(--layout-grid-lg-gutter);
+}
+
+/* Grid Margin - 반응형 */
+.layout-margin {
+  padding-left: var(--layout-grid-s-margin);
+  padding-right: var(--layout-grid-s-margin);
+}
+
+@media (min-width: 600px) {
+  .layout-margin {
+    padding-left: var(--layout-grid-md-margin);
+    padding-right: var(--layout-grid-md-margin);
+  }
+}
+
+@media (min-width: 1024px) {
+  .layout-margin {
+    padding-left: var(--layout-grid-lg-margin);
+    padding-right: var(--layout-grid-lg-margin);
+  }
+}
+
+@media (min-width: 1600px) {
+  .layout-margin {
+    padding-left: var(--layout-grid-xl-margin);
+    padding-right: var(--layout-grid-xl-margin);
+  }
+}
+
+/* ========================================
+ * Ratio Patterns
+ * SplitLayout에서 사용하는 권장 비율 패턴
+ * ======================================== */
+
+/* Balanced Split (1:1) */
+.layout-ratio-balanced {
+  grid-template-columns: var(--layout-ratio-balanced);
+}
+
+/* Content + Detail (3:5) */
+.layout-ratio-content-detail {
+  grid-template-columns: var(--layout-ratio-content-detail);
+}
+
+/* Main + Inspector (4:1) */
+.layout-ratio-main-inspector {
+  grid-template-columns: var(--layout-ratio-main-inspector);
+}
+
+/* Canvas + Panel (6:2) */
+.layout-ratio-canvas-panel {
+  grid-template-columns: var(--layout-ratio-canvas-panel);
+}
+
+/* Responsive variants - 모바일에서 수직 스택 */
+@media (max-width: 1023px) {
+  .layout-ratio-responsive {
+    grid-template-columns: 1fr !important;
+  }
+}

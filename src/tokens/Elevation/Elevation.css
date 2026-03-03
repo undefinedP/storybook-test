@@ -1,0 +1,169 @@
+/*
+ * Copyright (C) 2025. Nota Inc. All rights reserved.
+ * This source code is the property of nota inc. and is protected by copyright law. THE RECEIPT OR POSSESSION OF  THIS SOURCE CODE AND/OR RELATED INFORMATION DOES NOT CONVEY OR IMPLY TRANSFER OF OWNERSHIP, COPYRIGHT OR ANY RIGHTS INCLUDING BUT NOT LIMITED TO REPRODUCE, DISCLOSE OR DISTRIBUTE ITS CONTENTS, OR TO MANUFACTURE, USE, OR SELL ANYTHING THAT IT MAY DESCRIBE, IN WHOLE OR IN PART.
+ * Unauthorized disclosure, reproduction, modification, distribution, or commercial use of all or any part of this source code without prior written consent from Nota Inc. is strictly prohibited.
+ * This source code is provided "as is" and without any warranty, express or implied.
+ * Nota Inc. shall not be liable for any damages arising from the use of this source code.
+ * For inquiries regarding the use of this source code, please contact Nota Inc. at:
+ * Email: contact@nota.ai
+ */
+
+:root {
+  /* ========================================
+   * Light Mode Elevation Type Scale
+   * ======================================== */
+
+  /* Level 0 - 배경, 기본 레이아웃, 그림자 없음 */
+  --elevation-light-0: none;
+
+  /* Level 1 */
+  --elevation-light-1: 0px 1px 2px 0px rgba(0, 0, 0, 0.16),
+    0px 1px 1.5px 0px rgba(0, 0, 0, 0.08);
+
+  /* Level 2 */
+  --elevation-light-2: 0px 2px 4px 0px rgba(0, 0, 0, 0.16),
+    0px 1px 3px 0px rgba(0, 0, 0, 0.1);
+
+  /* Level 4 */
+  --elevation-light-4: 0px 4px 8px 0px rgba(0, 0, 0, 0.18),
+    0px 2px 4px 0px rgba(0, 0, 0, 0.12);
+
+  /* Level 8 */
+  --elevation-light-8: 0px 8px 16px 0px rgba(0, 0, 0, 0.2),
+    0px 4px 8px 0px rgba(0, 0, 0, 0.14);
+
+  /* Level 12 */
+  --elevation-light-12: 0px 12px 24px 0px rgba(0, 0, 0, 0.22),
+    0px 6px 12px 0px rgba(0, 0, 0, 0.16);
+
+  /* Level 16 */
+  --elevation-light-16: 0px 16px 32px 0px rgba(0, 0, 0, 0.24),
+    0px 8px 16px 0px rgba(0, 0, 0, 0.18);
+
+  /* Level 24 */
+  --elevation-light-24: 0px 24px 48px 0px rgba(0, 0, 0, 0.26),
+    0px 12px 24px 0px rgba(0, 0, 0, 0.2);
+
+  /* ========================================
+   * Dark Mode Elevation Type Scale
+   * ======================================== */
+
+  /* Level 0 - 배경, 기본 레이아웃, 그림자 없음 */
+  --elevation-dark-0: none;
+
+  /* Level 1 - Stroke 포함 */
+  --elevation-dark-1: 0px 1px 2px 0px rgba(0, 0, 0, 0.14),
+    0px 1px 1.5px 0px rgba(0, 0, 0, 0.08),
+    0 0 0 1px rgba(255, 255, 255, 0.1) inset;
+
+  /* Level 2 - Stroke 포함 */
+  --elevation-dark-2: 0px 2px 4px 0px rgba(0, 0, 0, 0.14),
+    0px 1px 3px 0px rgba(0, 0, 0, 0.1), 0 0 0 1px rgba(255, 255, 255, 0.08) inset;
+
+  /* Level 4 */
+  --elevation-dark-4: 0px 4px 8px 0px rgba(0, 0, 0, 0.16),
+    0px 2px 4px 0px rgba(0, 0, 0, 0.12);
+
+  /* Level 8 */
+  --elevation-dark-8: 0px 8px 16px 0px rgba(0, 0, 0, 0.18),
+    0px 4px 8px 0px rgba(0, 0, 0, 0.14);
+
+  /* Level 12 */
+  --elevation-dark-12: 0px 12px 24px 0px rgba(0, 0, 0, 0.2),
+    0px 6px 12px 0px rgba(0, 0, 0, 0.16);
+
+  /* Level 16 */
+  --elevation-dark-16: 0px 16px 32px 0px rgba(0, 0, 0, 0.22),
+    0px 8px 16px 0px rgba(0, 0, 0, 0.18);
+
+  /* Level 24 */
+  --elevation-dark-24: 0px 24px 48px 0px rgba(0, 0, 0, 0.24),
+    0px 12px 24px 0px rgba(0, 0, 0, 0.2);
+
+  /* ========================================
+   * Semantic Elevation Tokens
+   * ======================================== */
+
+  /* Surface - 배경, 기본 레이아웃, 그림자 없음 */
+  --elevation-surface: var(--elevation-light-0);
+  --elevation-surface-dark: var(--elevation-dark-0);
+
+  /* Navigation - 네비게이션 메뉴 */
+  --elevation-navigation: var(--elevation-light-4);
+  --elevation-navigation-dark: var(--elevation-dark-4);
+
+  /* Popover - Dropdown 등 트리거 위에 떠있는 플로팅 계층 */
+  --elevation-popover: var(--elevation-light-8);
+  --elevation-popover-dark: var(--elevation-dark-8);
+
+  /* Drawer - 화면 한 쪽을 덮는 보조 패널 */
+  --elevation-drawer: var(--elevation-light-12);
+  --elevation-drawer-dark: var(--elevation-dark-12);
+
+  /* Modal - Dimmed 처리 위 컴포넌트 */
+  --elevation-modal: var(--elevation-light-16);
+  --elevation-modal-dark: var(--elevation-dark-16);
+
+  /* Toast - 일시적 알림, 모달 위에도 가능 */
+  --elevation-toast: var(--elevation-light-16);
+  --elevation-toast-dark: var(--elevation-dark-16);
+
+  /* Tooltip - 가장 위에 위치하는 보조 설명 */
+  --elevation-tooltip: var(--elevation-light-24);
+  --elevation-tooltip-dark: var(--elevation-dark-24);
+
+  /* Z-index Scale */
+  --elevation-z-index-popover: 400;
+  --elevation-z-index-navigation: 200;
+  --elevation-z-index-drawer: 500;
+  --elevation-z-index-modal: 600;
+  --elevation-z-index-toast: 800;
+  --elevation-z-index-tooltip: 900;
+}
+
+@theme {
+  /* Light Mode Type Scale */
+  --shadow-light-0: var(--elevation-light-0);
+  --shadow-light-1: var(--elevation-light-1);
+  --shadow-light-2: var(--elevation-light-2);
+  --shadow-light-4: var(--elevation-light-4);
+  --shadow-light-8: var(--elevation-light-8);
+  --shadow-light-12: var(--elevation-light-12);
+  --shadow-light-16: var(--elevation-light-16);
+  --shadow-light-24: var(--elevation-light-24);
+
+  /* Dark Mode Type Scale */
+  --shadow-dark-0: var(--elevation-dark-0);
+  --shadow-dark-1: var(--elevation-dark-1);
+  --shadow-dark-2: var(--elevation-dark-2);
+  --shadow-dark-4: var(--elevation-dark-4);
+  --shadow-dark-8: var(--elevation-dark-8);
+  --shadow-dark-12: var(--elevation-dark-12);
+  --shadow-dark-16: var(--elevation-dark-16);
+  --shadow-dark-24: var(--elevation-dark-24);
+
+  /* Semantic Tokens */
+  --shadow-surface: var(--elevation-surface);
+  --shadow-surface-dark: var(--elevation-surface-dark);
+  --shadow-navigation: var(--elevation-navigation);
+  --shadow-navigation-dark: var(--elevation-navigation-dark);
+  --shadow-popover: var(--elevation-popover);
+  --shadow-popover-dark: var(--elevation-popover-dark);
+  --shadow-drawer: var(--elevation-drawer);
+  --shadow-drawer-dark: var(--elevation-drawer-dark);
+  --shadow-modal: var(--elevation-modal);
+  --shadow-modal-dark: var(--elevation-modal-dark);
+  --shadow-toast: var(--elevation-toast);
+  --shadow-toast-dark: var(--elevation-toast-dark);
+  --shadow-tooltip: var(--elevation-tooltip);
+  --shadow-tooltip-dark: var(--elevation-tooltip-dark);
+
+  /* Z-index Scale */
+  /* e.g. <div className='z-popover'> */
+  --z-index-popover: var(--elevation-z-index-popover);
+  --z-index-navigation: var(--elevation-z-index-navigation);
+  --z-index-drawer: var(--elevation-z-index-drawer);
+  --z-index-modal: var(--elevation-z-index-modal);
+  --z-index-toast: var(--elevation-z-index-toast);
+  --z-index-tooltip: var(--elevation-z-index-tooltip);
+}

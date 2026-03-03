@@ -1,0 +1,44 @@
+/*
+ * Copyright (C) 2025. Nota Inc. All rights reserved.
+ * This source code is the property of nota inc. and is protected by copyright law. THE RECEIPT OR POSSESSION OF  THIS SOURCE CODE AND/OR RELATED INFORMATION DOES NOT CONVEY OR IMPLY TRANSFER OF OWNERSHIP, COPYRIGHT OR ANY RIGHTS INCLUDING BUT NOT LIMITED TO REPRODUCE, DISCLOSE OR DISTRIBUTE ITS CONTENTS, OR TO MANUFACTURE, USE, OR SELL ANYTHING THAT IT MAY DESCRIBE, IN WHOLE OR IN PART.
+ * Unauthorized disclosure, reproduction, modification, distribution, or commercial use of all or any part of this source code without prior written consent from Nota Inc. is strictly prohibited.
+ * This source code is provided "as is" and without any warranty, express or implied.
+ * Nota Inc. shall not be liable for any damages arising from the use of this source code.
+ * For inquiries regarding the use of this source code, please contact Nota Inc. at:
+ * Email: contact@nota.ai
+ */
+
+:root {
+  /* Spacing Scale - 4px 기준 */
+  --spacing-4: 0.25rem; /* 4px */
+  --spacing-8: 0.5rem; /* 8px */
+  --spacing-12: 0.75rem; /* 12px */
+  --spacing-16: 1rem; /* 16px - 기본값 */
+  --spacing-20: 1.25rem; /* 20px */
+  --spacing-24: 1.5rem; /* 24px - 기본값 */
+  --spacing-28: 1.75rem; /* 28px */
+  --spacing-32: 2rem; /* 32px */
+  --spacing-36: 2.25rem; /* 36px */
+  --spacing-40: 2.5rem; /* 40px */
+  --spacing-48: 3rem; /* 48px */
+  --spacing-56: 3.5rem; /* 56px */
+  --spacing-72: 4.5rem; /* 72px */
+  --spacing-96: 6rem; /* 96px */
+}
+
+@theme {
+  --spacing-spacing-4: var(--spacing-4);
+  --spacing-spacing-8: var(--spacing-8);
+  --spacing-spacing-12: var(--spacing-12);
+  --spacing-spacing-16: var(--spacing-16);
+  --spacing-spacing-20: var(--spacing-20);
+  --spacing-spacing-24: var(--spacing-24);
+  --spacing-spacing-28: var(--spacing-28);
+  --spacing-spacing-32: var(--spacing-32);
+  --spacing-spacing-36: var(--spacing-36);
+  --spacing-spacing-40: var(--spacing-40);
+  --spacing-spacing-48: var(--spacing-48);
+  --spacing-spacing-56: var(--spacing-56);
+  --spacing-spacing-72: var(--spacing-72);
+  --spacing-spacing-96: var(--spacing-96);
+}
