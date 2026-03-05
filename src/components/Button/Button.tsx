@@ -5,12 +5,12 @@ import { cn } from "../../utils";
 import { Icon } from "../Icon";
 
 const buttonVariants = cva(
-  "inline-flex items-center justify-center gap-[0.5rem] rounded-[0.375rem] font-pretendard text-[0.875rem] font-semibold leading-[1.375rem] transition-all outline-none disabled:pointer-events-none disabled:opacity-50",
+  "inline-flex items-center justify-center gap-[0.5rem] rounded-radius-4 font-pretendard text-[0.875rem] font-semibold leading-[1.375rem] transition-all outline-none disabled:pointer-events-none disabled:opacity-50",
   {
     variants: {
       variant: {
         primary:
-          "bg-[#3b82f6] text-white hover:bg-[#60a5fa] data-[selected=true]:bg-[#60a5fa] focus-visible:shadow-[0_0_0_1px_#252a39,0_0_0_2px_#3b82f6]",
+          "bg-color-accent-product text-white hover:bg-[#60a5fa] data-[selected=true]:bg-[#60a5fa] focus-visible:shadow-[0_0_0_1px_#252a39,0_0_0_2px_#3b82f6]",
         secondary:
           "bg-[#3b404e] text-[#e0e4e8] border border-[#575e6c] hover:bg-[#4a5060] data-[selected=true]:bg-[#4a5060] focus-visible:shadow-[0_0_0_1px_#252a39,0_0_0_2px_#575e6c]",
         ghost:
@@ -92,8 +92,6 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
 
     const displayStartIcon = iconOnly ? icon || startIcon : icon || startIcon;
     const displayEndIcon = iconOnly ? null : endIcon;
-
-    console.log({ displayStartIcon, displayEndIcon });
 
     const LoadingSpinner = () => (
       <svg
