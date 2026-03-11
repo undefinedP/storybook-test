@@ -51,12 +51,12 @@ jobs:
           autoAcceptChanges: "main"
           #exitZeroOnChanges: false
 
-      - name: Comment Storybook URL on PR
-        if: github.ref != 'refs/heads/main'
-        run: |
-          PR_NUMBER=$(gh pr list --head "$GITHUB_REF_NAME" --json number --jq '.[0].number')
-          if [ -n "$PR_NUMBER" ]; then
-            gh pr comment "$PR_NUMBER" --body "🚀 Storybook: ${{ steps.chromatic.outputs.storybookUrl }}"
-          fi
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      # - name: Comment Storybook URL on PR
+      #   if: github.ref != 'refs/heads/main'
+      #   run: |
+      #     PR_NUMBER=$(gh pr list --head "$GITHUB_REF_NAME" --json number --jq '.[0].number')
+      #     if [ -n "$PR_NUMBER" ]; then
+      #       gh pr comment "$PR_NUMBER" --body "🚀 Storybook: ${{ steps.chromatic.outputs.storybookUrl }}"
+      #     fi
+      #   env:
+      #     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
