@@ -3,6 +3,28 @@ name: Chromatic
 on: push
 
 jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 10
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: pnpm
+
+      - run: pnpm install --frozen-lockfile
+
+      - name: Install Playwright browsers
+        run: pnpm playwright install chromium --with-deps
+
+      - name: Run Storybook interaction tests (play)
+        run: pnpm vitest --project=storybook --run
+
   chromatic:
     runs-on: ubuntu-latest
     steps:
@@ -21,9 +43,20 @@ jobs:
 
       - run: pnpm install --frozen-lockfile
 
-      - uses: chromaui/action@latest
+      - id: chromatic
+        uses: chromaui/action@latest
         with:
           projectToken: ${{ secrets.CHROMATIC_PROJECT_TOKEN }}
           onlyChanged: true
           autoAcceptChanges: "main"
           exitZeroOnChanges: false
+
+      - name: Comment Storybook URL on PR
+        if: github.ref != 'refs/heads/main'
+        run: |
+          PR_NUMBER=$(gh pr list --head "$GITHUB_REF_NAME" --json number --jq '.[0].number')
+          if [ -n "$PR_NUMBER" ]; then
+            gh pr comment "$PR_NUMBER" --body "🚀 Storybook: ${{ steps.chromatic.outputs.storybookUrl }}"
+          fi
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
